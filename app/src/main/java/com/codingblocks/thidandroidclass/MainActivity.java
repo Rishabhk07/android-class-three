@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,SecondActivity.class);
-                String val = etValue.getText().toString();
+                int val = Integer.parseInt(etValue.getText().toString());
                 i.putExtra(KEY,val);
                 startActivityForResult(i,REQ_CODE);
             }
@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: " );
         if(requestCode == MainActivity.REQ_CODE&& resultCode == 789){
             Log.d(TAG, "onActivityResult: " + data.getStringExtra("second"));
         }
     }
+
 }
